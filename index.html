@@ -1,0 +1,112 @@
+<!DOCTYPE html> 
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор отмазок "Мне похуй"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        #container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #sentence {
+            margin-top: 30px;
+            font-size: 36px; /* Reduced to half the previous size */
+            font-weight: bold;
+            line-height: 1.4; /* Adjusted line height for readability */
+            background: linear-gradient(90deg, #ff4e50, #f9d423, #4fd3ff, #f36d6d, #a64dff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 5s ease infinite;
+            padding: 0 20px;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h1>Генератор отмазок от нежелательных встреч</h1>
+    <button onclick="generateSentence()">Генерировать отмазку</button>
+    <p id="sentence"></p>
+</div>
+
+<script>
+    // Lists of words and phrases to construct refusal sentences
+    const apologies = ["Прости", "Сорри", "Слушай", "Привет", "Ээээ, знаешь..."];
+    const excuses = [
+        "у меня сегодня куча дел",
+        "не думаю, что получится встретиться",
+        "мне надо побыть одной",
+        "честно, я просто устала",
+	"мне кажется, встреча с диваном важнее",
+        "наверное, обойдусь сегодня без встреч",
+        "ну, если честно, мне похуй"
+    ];
+    const conjunctions = ["потому что", "и", "так как", "+"];
+    const reasons = [
+        "завал на работе",
+        "надо доделать кучу всего",
+        "я реально истощена",
+        "у меня просто нет сил",
+        "меня ждёт куча других дел",
+        "мне это особо не нужно",
+	"мне реально поебать.",
+	"куча планов по ничего не деланию",
+	"у меня полная занятость - просмотр сериалов",
+	"я буду смотреть аниме, это важнее"
+    ];
+
+    // Function to generate a random refusal sentence
+    function generateSentence() {
+        const apology = apologies[Math.floor(Math.random() * apologies.length)];
+        const excuse = excuses[Math.floor(Math.random() * excuses.length)];
+        const conjunction = conjunctions[Math.floor(Math.random() * conjunctions.length)];
+        const reason = reasons[Math.floor(Math.random() * reasons.length)];
+        const sentence = `${apology}, ${excuse} ${conjunction} ${reason}.`;
+
+        // Display the generated sentence in the HTML element with ID "sentence"
+        document.getElementById("sentence").innerText = sentence;
+    }
+</script>
+
+</body>
+</html>
